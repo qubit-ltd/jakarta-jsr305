@@ -2,44 +2,27 @@
 
 English | [中文](DEPLOYMENT-GUIDE.zh_CN.md)
 
-This project supports publishing to multiple Maven repositories through different Maven profiles.
+This project supports publishing to two different Maven repositories. By default, `mvn deploy` publishes to Maven Central. Use the `-P qubit` profile to publish to Qubit repository instead.
 
-## Profile Overview
+## Repository Overview
 
-### 1. `release-common` - Basic Release Configuration
-Only generates source and JavaDoc JARs without specifying a target repository. Suitable for local testing or custom deployment configurations.
+### Default Behavior - Maven Central
+When running `mvn deploy` without any profile:
+- Deploys to Sonatype OSSRH (Maven Central)
+- Generates source and JavaDoc JARs automatically
+- Requires GPG signing for Maven Central compliance
+- Uses Nexus Staging plugin for automated release process
 
-### 2. `qubit-release` - Deploy to Qubit Repository
-Deploys to `maven.qubit.ltd` repository, including:
-- Generate source JAR
-- Generate JavaDoc JAR
-- No GPG signing required
-
-### 3. `maven-central` - Deploy to Maven Central
-Deploys to Sonatype OSSRH (Maven Central), including:
-- Generate source JAR
-- Generate JavaDoc JAR
-- GPG signing (required)
-- Nexus Staging plugin
+### Qubit Profile - Qubit Repository
+When running `mvn deploy -P qubit`:
+- Deploys to `maven.qubit.ltd` repository
+- Generates source and JavaDoc JARs automatically
+- No GPG signing required (disabled)
+- Direct deployment without staging
 
 ## Usage
 
-### Deploy to Qubit Repository
-
-```bash
-# Compile and test
-mvn clean compile -P qubit-release
-
-# Deploy SNAPSHOT version
-mvn clean deploy -P qubit-release
-
-# Deploy release version (ensure version doesn't contain -SNAPSHOT)
-# 1. Update version in pom.xml
-# 2. Execute deployment
-mvn clean deploy -P qubit-release
-```
-
-### Deploy to Maven Central
+### Deploy to Maven Central (Default)
 
 ```bash
 # Prerequisites:
@@ -48,17 +31,32 @@ mvn clean deploy -P qubit-release
 # 3. Maven settings.xml configured
 
 # Compile and test
-mvn clean compile -P maven-central
+mvn clean compile
 
-# Deploy to central repository
-mvn clean deploy -P maven-central
+# Deploy SNAPSHOT or release version
+mvn clean deploy
+```
+
+### Deploy to Qubit Repository
+
+```bash
+# Compile and test
+mvn clean compile -P qubit
+
+# Deploy SNAPSHOT version
+mvn clean deploy -P qubit
+
+# Deploy release version (ensure version doesn't contain -SNAPSHOT)
+# 1. Update version in pom.xml
+# 2. Execute deployment
+mvn clean deploy -P qubit
 ```
 
 ### Generate Release Packages Only (no upload)
 
 ```bash
-# Use basic configuration to generate all required JAR files
-mvn clean package -P release-common
+# Generate all required JAR files without deployment
+mvn clean package
 ```
 
 ## Maven Settings Configuration

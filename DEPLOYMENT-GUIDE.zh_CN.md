@@ -2,44 +2,27 @@
 
 [English](DEPLOYMENT-GUIDE.md) | 中文
 
-本项目支持发布到多个 Maven 仓库，通过不同的 Maven Profile 来实现。
+本项目支持发布到两个不同的 Maven 仓库。默认情况下，`mvn deploy` 发布到 Maven 中央仓库。使用 `-P qubit` 参数可以发布到 Qubit 仓库。
 
-## Profile 说明
+## 仓库说明
 
-### 1. `release-common` - 基础发布配置
-仅生成源码和 JavaDoc JAR，不指定具体的发布仓库。适用于本地测试或自定义发布配置。
+### 默认行为 - Maven 中央仓库
+运行 `mvn deploy`（不加任何 profile）时：
+- 发布到 Sonatype OSSRH（Maven 中央仓库）
+- 自动生成源码和 JavaDoc JAR
+- 需要 GPG 签名（Maven 中央仓库要求）
+- 使用 Nexus Staging 插件进行自动化发布流程
 
-### 2. `qubit-release` - 发布到 Qubit 仓库
-发布到 `maven.qubit.ltd` 仓库，包含：
-- 生成源码 JAR
-- 生成 JavaDoc JAR
-- 不需要 GPG 签名
-
-### 3. `maven-central` - 发布到 Maven 中央仓库
-发布到 Sonatype OSSRH（Maven 中央仓库），包含：
-- 生成源码 JAR
-- 生成 JavaDoc JAR
-- GPG 签名（必需）
-- Nexus Staging 插件
+### Qubit Profile - Qubit 仓库
+运行 `mvn deploy -P qubit` 时：
+- 发布到 `maven.qubit.ltd` 仓库
+- 自动生成源码和 JavaDoc JAR
+- 不需要 GPG 签名（已禁用）
+- 直接部署，无需暂存
 
 ## 使用方法
 
-### 发布到 Qubit 仓库
-
-```bash
-# 编译和测试
-mvn clean compile -P qubit-release
-
-# 发布 SNAPSHOT 版本
-mvn clean deploy -P qubit-release
-
-# 发布正式版本（确保版本号不包含 -SNAPSHOT）
-# 1. 修改 pom.xml 中的版本号
-# 2. 执行发布
-mvn clean deploy -P qubit-release
-```
-
-### 发布到 Maven 中央仓库
+### 发布到 Maven 中央仓库（默认）
 
 ```bash
 # 前提条件：
@@ -48,17 +31,32 @@ mvn clean deploy -P qubit-release
 # 3. 已配置 Maven settings.xml
 
 # 编译和测试
-mvn clean compile -P maven-central
+mvn clean compile
 
-# 发布到中央仓库
-mvn clean deploy -P maven-central
+# 发布 SNAPSHOT 或正式版本
+mvn clean deploy
+```
+
+### 发布到 Qubit 仓库
+
+```bash
+# 编译和测试
+mvn clean compile -P qubit
+
+# 发布 SNAPSHOT 版本
+mvn clean deploy -P qubit
+
+# 发布正式版本（确保版本号不包含 -SNAPSHOT）
+# 1. 修改 pom.xml 中的版本号
+# 2. 执行发布
+mvn clean deploy -P qubit
 ```
 
 ### 仅生成发布包（不上传）
 
 ```bash
-# 使用基础配置生成所有必需的 JAR 文件
-mvn clean package -P release-common
+# 生成所有必需的 JAR 文件，但不部署
+mvn clean package
 ```
 
 ## Maven Settings 配置
