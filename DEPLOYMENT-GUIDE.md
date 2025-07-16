@@ -84,7 +84,7 @@ Configure in `~/.m2/settings.xml`:
 
 ### For Maven Central
 
-Refer to detailed configuration instructions in [RELEASE-GUIDE.md](RELEASE-GUIDE.md).
+Refer to the detailed configuration instructions in this document.
 
 ## Version Management
 
@@ -151,7 +151,7 @@ After deployment, artifacts will be available in about 10-30 minutes at:
 Check username and password configuration in Maven settings.xml.
 
 ### 2. GPG Signing Failed
-Ensure GPG is properly installed and configured. Refer to [RELEASE-GUIDE.md](RELEASE-GUIDE.md).
+Ensure GPG is properly installed and configured. Refer to the GPG configuration section in this document.
 
 ### 3. Version Conflict
 Release versions cannot be republished. Update the version number.

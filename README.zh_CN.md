@@ -105,8 +105,7 @@ public class UserService {
 
 ## 文档
 
-- [部署指南](DEPLOYMENT-GUIDE.md) - 如何发布到不同的 Maven 仓库
-- [发布指南](RELEASE-GUIDE.md) - Maven 中央仓库发布详细指南
+- [部署指南](DEPLOYMENT-GUIDE.zh_CN.md) - Maven 中央仓库发布详细指南
 
 ## 相关项目
 

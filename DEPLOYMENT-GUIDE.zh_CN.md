@@ -84,7 +84,7 @@ mvn clean package
 
 ### 发布到 Maven 中央仓库
 
-参考 [RELEASE-GUIDE.md](RELEASE-GUIDE.md) 中的详细配置说明。
+参考本文档中的详细配置说明。
 
 ## 版本管理
 
@@ -151,7 +151,7 @@ curl -I https://maven.qubit.ltd/releases/ltd/qubit/jakarta-jsr305/1.0.0/jakarta-
 检查 Maven settings.xml 中的用户名和密码配置。
 
 ### 2. GPG 签名失败
-确保 GPG 已正确安装和配置，参考 [RELEASE-GUIDE.md](RELEASE-GUIDE.md)。
+确保 GPG 已正确安装和配置，参考本文档中的 GPG 配置部分。
 
 ### 3. 版本冲突
 正式版本不能重复发布，需要更新版本号。

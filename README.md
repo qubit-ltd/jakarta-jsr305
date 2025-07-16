@@ -105,8 +105,7 @@ Issues and Pull Requests are welcome to improve this project.
 
 ## Documentation
 
-- [Deployment Guide](DEPLOYMENT-GUIDE.md) - How to deploy to different Maven repositories
-- [Release Guide](RELEASE-GUIDE.md) - Detailed guide for releasing to Maven Central
+- [Deployment Guide](DEPLOYMENT-GUIDE.md) - Detailed guide for releasing to Maven Central
 
 ## Related Projects
 
