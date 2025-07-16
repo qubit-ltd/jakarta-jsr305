@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <!-- 服务器配置 -->
+  <servers>
+    <!-- Sonatype OSSRH 服务器配置 -->
+    <server>
+      <id>ossrh</id>
+      <username>your-sonatype-jira-username</username>
+      <password>your-sonatype-jira-password</password>
+    </server>
+  </servers>
+
+  <!-- 配置文件 -->
+  <profiles>
+    <profile>
+      <id>ossrh</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <!-- GPG 配置 -->
+        <gpg.executable>gpg</gpg.executable>
+        <gpg.passphrase>your-gpg-passphrase</gpg.passphrase>
+        <!-- 可选：指定密钥ID -->
+        <!-- <gpg.keyname>your-key-id</gpg.keyname> -->
+      </properties>
+    </profile>
+  </profiles>
+
+</settings>
