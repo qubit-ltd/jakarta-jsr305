@@ -40,7 +40,7 @@ Java EE 向 Jakarta EE 的迁移是当前的主流趋势，`javax.*` 向 `jakart
   <groupId>ltd.qubit</groupId>
   <artifactId>jakarta-jsr305</artifactId>
   <version>1.0.0</version>
-  <scope>provided</scope>
+  <scope>compile</scope>
 </dependency>
 ```
 

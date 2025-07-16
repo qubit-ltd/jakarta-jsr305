@@ -40,7 +40,7 @@ This project contains the complete set of JSR-305 annotations, including but not
   <groupId>ltd.qubit</groupId>
   <artifactId>jakarta-jsr305</artifactId>
   <version>1.0.0</version>
-  <scope>provided</scope>
+  <scope>compile</scope>
 </dependency>
 ```
 
