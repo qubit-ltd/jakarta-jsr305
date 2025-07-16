@@ -91,8 +91,8 @@ public class UserService {
 
 ## 兼容性
 
-- **Java 版本**：需要 Java 9 或更高版本
-- **编译目标**：编译为 Java 9 字节码级别
+- **Java 版本**：需要 Java 11 或更高版本
+- **编译目标**：编译为 Java 11 字节码级别
 - **模块化**：提供 `module-info.java` 支持
 
 ## 许可证

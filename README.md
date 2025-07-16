@@ -91,8 +91,8 @@ If your project is currently using JSR-305 annotations from `javax.annotation`, 
 
 ## Compatibility
 
-- **Java Version**: Requires Java 9 or higher
-- **Compilation Target**: Compiled to Java 9 bytecode level
+- **Java Version**: Requires Java 11 or higher
+- **Compilation Target**: Compiled to Java 11 bytecode level
 - **Modularity**: Provides `module-info.java` support
 
 ## License
